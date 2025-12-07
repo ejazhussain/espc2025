@@ -1,0 +1,648 @@
+/* Import enhanced dark mode styles */
+@import './styles/DarkModeEnhancements.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Microsoft Teams Theme CSS Variables */
+:root {
+  --teams-primary-50: #f5f5ff;
+  --teams-primary-100: #ebebff;
+  --teams-primary-500: #7b83eb;
+  --teams-primary-600: #6264a7;
+  --teams-primary-700: #464775;
+  --teams-accent-400: #00bcf2;
+  --teams-accent-500: #0078d4;
+  --teams-accent-600: #005a9e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9fafb; /* Light mode default */
+  color: #374151;
+}
+
+/* Theme-aware body styles */
+.dark body {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+/* Azure Communication Services component styling overrides */
+[data-ui-id="rich-text-send-box"] {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+[data-ui-id="rich-text-send-box"] textarea {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+/* Message text styling for better contrast */
+.light [data-ui-id="message-content"] {
+  color: #1f2937 !important;
+}
+
+/* Timestamp and metadata styling */
+.light [data-ui-id="message-timestamp"],
+.light [data-ui-id="message-status"],
+.light .fui-MessageThread__message__timestamp,
+.light .fui-MessageThread__message__status {
+  color: #374151 !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+.dark [data-ui-id="message-timestamp"],
+.dark [data-ui-id="message-status"],
+.dark .fui-MessageThread__message__timestamp,
+.dark .fui-MessageThread__message__status {
+  color: #e5e7eb !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+/* Agent/other user messages - ensure dark text on light background */
+.light [data-ui-id="chat-message"]:not([data-ui-id="my-message"]) {
+  color: #1f2937 !important;
+  background-color: #f8fafc !important;
+}
+
+.light [data-ui-id="chat-message"]:not([data-ui-id="my-message"]) [data-ui-id="message-timestamp"],
+.light [data-ui-id="chat-message"]:not([data-ui-id="my-message"]) .fui-MessageThread__message__timestamp,
+.light [data-ui-id="chat-message"]:not([data-ui-id="my-message"]) time {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+/* User's own messages - ensure white text on blue background */
+.light [data-ui-id="my-message"] {
+  color: white !important;
+}
+
+.dark [data-ui-id="my-message"] {
+  color: white !important;
+}
+
+/* User's own message timestamps */
+.light [data-ui-id="my-message"] [data-ui-id="message-timestamp"],
+.light [data-ui-id="my-message"] .fui-MessageThread__message__timestamp {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark [data-ui-id="my-message"] [data-ui-id="message-timestamp"],
+.dark [data-ui-id="my-message"] .fui-MessageThread__message__timestamp {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Additional specific selectors for Azure Communication Services */
+.light [class*="messageContainer"]:not([class*="myMessage"]) {
+  color: #1f2937 !important;
+  background-color: #f8fafc !important;
+}
+
+.light [class*="messageContainer"]:not([class*="myMessage"]) [class*="timestamp"],
+.light [class*="messageContainer"]:not([class*="myMessage"]) [class*="time"] {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+.light [class*="myMessageContainer"] {
+  color: white !important;
+}
+
+.light [class*="myMessageContainer"] [class*="timestamp"],
+.light [class*="myMessageContainer"] [class*="time"] {
+  color: rgba(255, 255, 255, 1) !important;
+  font-weight: 500 !important;
+}
+
+/* Fallback selectors for agent messages */
+.light [role="log"] [role="listitem"]:not([aria-label*="You"]) {
+  color: #1f2937 !important;
+}
+
+.light [role="log"] [role="listitem"]:not([aria-label*="You"]) time {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+/* General message styling improvements */
+.light [role="log"] [role="listitem"] {
+  color: #1f2937 !important;
+}
+
+.light [role="log"] [role="listitem"] time {
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+/* User's own message timestamps - make them fully white and bold */
+.light [data-ui-id="my-message"] [data-ui-id="message-timestamp"],
+.light [data-ui-id="my-message"] .fui-MessageThread__message__timestamp {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.dark [data-ui-id="my-message"] [data-ui-id="message-timestamp"],
+.dark [data-ui-id="my-message"] .fui-MessageThread__message__timestamp {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Force white timestamps on any blue background message */
+.light [style*="background"] [data-ui-id="message-timestamp"],
+.light [style*="background: rgb(59, 130, 246)"] time,
+.light [style*="background: rgb(37, 99, 235)"] time,
+.light [style*="background:#3b82f6"] time,
+.light [style*="background:#2563eb"] time,
+.light [class*="blue"] time,
+.light [class*="Blue"] time {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Additional fallback for blue message containers */
+.light [role="listitem"][style*="background"] time {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Comprehensive blue background timestamp fixes */
+.light div[style*="background: rgb(59, 130, 246)"] *,
+.light div[style*="background: rgb(37, 99, 235)"] *,
+.light div[style*="background:#3b82f6"] *,
+.light div[style*="background:#2563eb"] *,
+.light div[style*="background-color: rgb(59, 130, 246)"] *,
+.light div[style*="background-color: rgb(37, 99, 235)"] *,
+.light div[style*="background-color:#3b82f6"] *,
+.light div[style*="background-color:#2563eb"] * {
+  color: white !important;
+}
+
+/* Target timestamps specifically in blue containers */
+.light div[style*="rgb(59, 130, 246)"] [class*="timestamp"],
+.light div[style*="rgb(37, 99, 235)"] [class*="timestamp"],
+.light div[style*="#3b82f6"] [class*="timestamp"],
+.light div[style*="#2563eb"] [class*="timestamp"],
+.light div[style*="rgb(59, 130, 246)"] time,
+.light div[style*="rgb(37, 99, 235)"] time,
+.light div[style*="#3b82f6"] time,
+.light div[style*="#2563eb"] time {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Microsoft Teams Theme Utility Classes */
+.teams-primary-bg {
+  background-color: var(--teams-primary-600) !important;
+}
+
+.teams-primary-hover:hover {
+  background-color: var(--teams-primary-700) !important;
+}
+
+.teams-accent-bg {
+  background-color: var(--teams-accent-500) !important;
+}
+
+.teams-light-bg {
+  background-color: var(--teams-primary-50) !important;
+}
+
+.teams-border {
+  border-color: var(--teams-primary-500) !important;
+}
+
+.teams-text {
+  color: var(--teams-accent-500) !important;
+}
+
+/* Universal blue background timestamp rule - very aggressive */
+.light *[style*="59, 130, 246"] *[class*="time"],
+.light *[style*="37, 99, 235"] *[class*="time"],
+.light *[style*="59, 130, 246"] time,
+.light *[style*="37, 99, 235"] time {
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+/* Force all small text in blue containers to be white */
+.light div[style*="background"][style*="59, 130, 246"] small,
+.light div[style*="background"][style*="37, 99, 235"] small,
+.light div[style*="background"][style*="59, 130, 246"] span[style*="font-size"],
+.light div[style*="background"][style*="37, 99, 235"] span[style*="font-size"] {
+  color: white !important;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    width: fit-content;
+  }
+}
+
+/* ============================================================================
+   Meeting Integration Styles
+   ============================================================================ */
+
+.meeting-actions {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.btn-quick-meeting,
+.btn-custom-meeting {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-quick-meeting {
+  background: var(--teams-accent-500, #0078d4);
+  color: white;
+}
+
+.btn-quick-meeting:hover {
+  background: var(--teams-accent-600, #005a9e);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 120, 212, 0.3);
+}
+
+.btn-custom-meeting {
+  background: white;
+  color: var(--teams-accent-500, #0078d4);
+  border: 1px solid var(--teams-accent-500, #0078d4);
+}
+
+.btn-custom-meeting:hover {
+  background: var(--teams-primary-50, #f5f5ff);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 120, 212, 0.2);
+}
+
+.dark .btn-custom-meeting {
+  background: transparent;
+  color: var(--teams-accent-400, #00bcf2);
+  border-color: var(--teams-accent-400, #00bcf2);
+}
+
+.dark .btn-custom-meeting:hover {
+  background: rgba(0, 188, 242, 0.1);
+}
+
+.btn-quick-meeting:disabled,
+.btn-custom-meeting:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Meeting Scheduler Modal */
+.meeting-scheduler {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.dark .meeting-scheduler {
+  background: #1f2937;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.scheduler-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .scheduler-header {
+  border-bottom-color: #374151;
+}
+
+.scheduler-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dark .scheduler-header h3 {
+  color: #f9fafb;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.dark .btn-close:hover {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.scheduler-body {
+  padding: 20px;
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #fecaca;
+}
+
+.dark .error-message {
+  background: rgba(220, 38, 38, 0.1);
+  color: #fca5a5;
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.dark .form-group label {
+  color: #d1d5db;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+  background: white;
+  color: #111827;
+}
+
+.dark .form-group input,
+.dark .form-group select,
+.dark .form-group textarea {
+  background: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--teams-accent-500, #0078d4);
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  font-family: inherit;
+  min-height: 80px;
+}
+
+.scheduler-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.dark .scheduler-footer {
+  border-top-color: #374151;
+}
+
+.btn-cancel,
+.btn-schedule {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btn-cancel {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+.dark .btn-cancel {
+  background: #374151;
+  color: #d1d5db;
+}
+
+.dark .btn-cancel:hover {
+  background: #4b5563;
+}
+
+.btn-schedule {
+  background: var(--teams-accent-500, #0078d4);
+  color: white;
+}
+
+.btn-schedule:hover {
+  background: var(--teams-accent-600, #005a9e);
+  box-shadow: 0 4px 8px rgba(0, 120, 212, 0.3);
+}
+
+.btn-schedule:disabled,
+.btn-cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Meeting Info Card */
+.meeting-info {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.dark .meeting-info {
+  background: #1f2937;
+}
+
+.meeting-status {
+  margin-bottom: 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.scheduled {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-badge.active {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.past {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.dark .status-badge.scheduled {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.dark .status-badge.active {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fcd34d;
+}
+
+.dark .status-badge.past {
+  background: rgba(156, 163, 175, 0.2);
+  color: #9ca3af;
+}
+
+.meeting-details {
+  margin: 12px 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 12px;
+}
+
+.dark .detail-row {
+  border-bottom-color: #374151;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  font-weight: 500;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.dark .detail-row .label {
+  color: #9ca3af;
+}
+
+.detail-row .value {
+  color: #111827;
+  text-align: right;
+}
+
+.dark .detail-row .value {
+  color: #f9fafb;
+}
+
+.detail-row a {
+  color: var(--teams-accent-500, #0078d4);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.detail-row a:hover {
+  text-decoration: underline;
+}
+
+.dark .detail-row a {
+  color: var(--teams-accent-400, #00bcf2);
+}
+
+.meeting-controls {
+  margin-top: 12px;
+}
+
+.btn-cancel-meeting {
+  padding: 8px 16px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btn-cancel-meeting:hover {
+  background: #b91c1c;
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+}
+
+.btn-cancel-meeting:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

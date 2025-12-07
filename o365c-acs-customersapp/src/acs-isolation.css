@@ -1,0 +1,43 @@
+/**
+ * ACS/Fluent UI Isolation Layer
+ * 
+ * This file restores native browser/Fluent UI styles for ACS components
+ * that get overridden by Tailwind's CSS reset.
+ * 
+ * MUST be imported AFTER Tailwind CSS to have higher specificity.
+ */
+
+/* Restore button styles for Fluent UI components */
+.fui-FluentProvider button,
+.fui-FluentProvider button *,
+[class*="ms-Button"],
+[class*="fui-Button"],
+[data-ui-id*="button"] {
+  all: revert;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Restore all Fluent UI component styles */
+.fui-FluentProvider,
+.fui-FluentProvider * {
+  all: revert;
+}
+
+/* Ensure proper display modes */
+.fui-FluentProvider {
+  display: contents;
+}
+
+.fui-FluentProvider div,
+.fui-FluentProvider span {
+  display: revert;
+}
+
+/* Restore Fluent UI specific elements */
+[class*="ms-"],
+[class*="fui-"],
+[data-ui-id] {
+  all: revert;
+}

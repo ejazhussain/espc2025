@@ -1,0 +1,226 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { useEffect, useMemo, useState } from 'react';
+import {
+  CallWithChatComposite,
+  CallWithChatAdapter,
+  createAzureCommunicationCallWithChatAdapter,
+  CallAdapterLocator
+} from '@azure/communication-react';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
+import axios from 'axios';
+import { Dialog, Button, Flex, Text, Spinner, VisuallyHidden } from '@radix-ui/themes';
+
+interface TeamsCallCompositeProps {
+  meetingLink: string;
+  threadId: string;
+  userId: string;
+  displayName: string;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+interface MeetingTokenResponse {
+  success: boolean;
+  token?: string;
+  userId?: string;  // Backend returns "userId" not "acsUserId"
+  expiresOn?: string;
+  errorMessage?: string;
+}
+
+/**
+ * Teams Call Composite Component
+ * Provides a full Teams-like meeting experience using Azure Communication Services UI Library
+ * 
+ * Features:
+ * - Native Teams UI/UX
+ * - Camera, microphone, screen sharing controls
+ * - Participant roster
+ * - Meeting chat (enabled)
+ * - Device settings
+ */
+export const TeamsCallComposite = (props: TeamsCallCompositeProps): JSX.Element => {
+  const { meetingLink, threadId, userId, displayName, open, onOpenChange } = props;
+  
+  const [adapter, setAdapter] = useState<CallWithChatAdapter | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null);
+  const [isInitializing, setIsInitializing] = useState(true);
+
+  // Decode the meeting link if URL-encoded
+  const decodedMeetingLink = useMemo(() => {
+    try {
+      return decodeURIComponent(meetingLink);
+    } catch {
+      return meetingLink;
+    }
+  }, [meetingLink]);
+
+  // Initialize the call adapter
+  useEffect(() => {
+    if (!open) return;
+
+    const initializeAdapter = async () => {
+      setIsInitializing(true);
+      setError(null);
+
+      try {
+        console.log('[TeamsCallComposite] Initializing call adapter...');
+        
+        // Get ACS token for this user
+        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:7071';
+        console.log('[TeamsCallComposite] API Base URL:', apiBaseUrl);
+        console.log('[TeamsCallComposite] Request params:', { threadId, userId, displayName });
+        
+        const tokenResponse = await axios.post<MeetingTokenResponse>(
+          `${apiBaseUrl}/api/teamsinterop/token`,
+          { threadId, userId, displayName }
+        );
+
+        console.log('[TeamsCallComposite] Token response:', {
+          success: tokenResponse.data.success,
+          hasToken: !!tokenResponse.data.token,
+          hasUserId: !!tokenResponse.data.userId,
+          errorMessage: tokenResponse.data.errorMessage
+        });
+
+        if (!tokenResponse.data.success || !tokenResponse.data.token || !tokenResponse.data.userId) {
+          throw new Error(tokenResponse.data.errorMessage || 'Failed to get meeting token');
+        }
+
+        console.log('[TeamsCallComposite] Got token, creating adapter...');
+
+        // Create token credential
+        const tokenCredential = new AzureCommunicationTokenCredential(tokenResponse.data.token);
+
+        // Get ACS endpoint URL
+        const endpointUrl = process.env.REACT_APP_ACS_ENDPOINT_URL || '';
+        if (!endpointUrl) {
+          throw new Error('ACS endpoint URL not configured');
+        }
+
+        // Create call locator for Teams meeting
+        const locator: CallAdapterLocator = {
+          meetingLink: decodedMeetingLink
+        };
+
+        // Create the call WITH CHAT adapter for Teams UI
+        const callWithChatAdapter = await createAzureCommunicationCallWithChatAdapter({
+          userId: { communicationUserId: tokenResponse.data.userId },
+          displayName: displayName,
+          credential: tokenCredential,
+          locator: locator,
+          endpoint: endpointUrl
+        });
+
+        console.log('[TeamsCallComposite] Call with chat adapter created successfully');
+        setAdapter(callWithChatAdapter);
+
+      } catch (err) {
+        console.error('[TeamsCallComposite] Failed to initialize adapter:', err);
+        setError(err instanceof Error ? err.message : 'Failed to initialize call');
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+
+    initializeAdapter();
+
+    // Cleanup adapter on unmount
+    return () => {
+      adapter?.dispose();
+    };
+  }, [open, threadId, userId, displayName, decodedMeetingLink]);
+
+  // Handle call ended
+  useEffect(() => {
+    if (!adapter) return;
+
+    const callEndedHandler = () => {
+      console.log('[TeamsCallComposite] Call ended');
+      onOpenChange(false);
+    };
+
+    adapter.on('callEnded', callEndedHandler);
+
+    return () => {
+      adapter.off('callEnded', callEndedHandler);
+    };
+  }, [adapter, onOpenChange]);
+
+  return (
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <Dialog.Content
+        style={{
+          maxWidth: '95vw',
+          width: '1400px',
+          height: '90vh',
+          padding: 0,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+        aria-describedby="meeting-dialog-description"
+      >
+        <VisuallyHidden>
+          <Dialog.Title>Teams Video Meeting</Dialog.Title>
+          <Dialog.Description id="meeting-dialog-description">
+            Join the video call with your support agent
+          </Dialog.Description>
+        </VisuallyHidden>
+
+        {isInitializing && (
+          <Flex
+            direction="column"
+            align="center"
+            justify="center"
+            gap="4"
+            style={{ height: '100%' }}
+          >
+            <Spinner size="3" />
+            <Text size="3">Connecting to meeting...</Text>
+          </Flex>
+        )}
+
+        {error && (
+          <Flex
+            direction="column"
+            align="center"
+            justify="center"
+            gap="4"
+            style={{ height: '100%', padding: '2rem' }}
+          >
+            <Text size="5" weight="bold" color="red">
+              Unable to Join Meeting
+            </Text>
+            <Text size="3" color="gray">
+              {error}
+            </Text>
+            <Button onClick={() => onOpenChange(false)}>Close</Button>
+          </Flex>
+        )}
+
+        {adapter && !isInitializing && !error && (
+          <div style={{ width: '100%', height: '100%' }}>
+            <CallWithChatComposite
+              adapter={adapter}
+              options={{
+                callControls: {
+                  cameraButton: true,
+                  microphoneButton: true,
+                  screenShareButton: true,
+                  devicesButton: true,
+                  peopleButton: true,
+                  displayType: 'default',
+                  endCallButton: true,
+                  moreButton: true
+                }
+              }}
+              formFactor="desktop"
+            />
+          </div>
+        )}
+      </Dialog.Content>
+    </Dialog.Root>
+  );
+};

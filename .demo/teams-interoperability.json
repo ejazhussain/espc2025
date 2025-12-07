@@ -1,0 +1,80 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "DEMO2-P3-Teams Interoperability",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mip6nkvt-vx3d",
+      "title": "Screenshot",
+      "steps": [
+        {
+          "action": "imagePreview",
+          "path": ".demo/screenshots/teams_interoperability_flow.png"
+        }
+      ]
+    },
+    {
+      "id": "demo-miopn5af-ra0p",
+      "title": "Agent create meeting request",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-supportagentsapp/src/components/MeetingIntegration.tsx",
+          "position": "216:229",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mioq8p0a-p5cl",
+      "title": "Meeting Creation via Graph API",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/TeamsMeetingService.cs",
+          "position": "72:101",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-miordbcg-l78k",
+      "title": "Assoicate meeting link with Chat Thread",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/TeamsInteropService.cs",
+          "zoom": 2,
+          "position": "262:273",
+          "highlightWholeLine": true
+        }
+      ]
+    },
+    {
+      "id": "demo-miorgr4a-ijg8",
+      "title": "Send meeting link to students to join",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/TeamsMeetingService.cs",
+          "position": "395:441",
+          "highlightWholeLine": false,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-miormr96-cn3u",
+      "title": "Recap",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/demo2-p3-recap.md"
+        }
+      ]
+    }
+  ],
+  "description": "Teams meeting between Agent and Student"
+}

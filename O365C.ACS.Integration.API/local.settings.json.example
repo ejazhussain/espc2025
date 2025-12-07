@@ -1,0 +1,42 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "your-application-insights-connection-string-here"
+  },
+  "ConnectionStrings": {
+    "AzureCommunicationServices": "endpoint=https://your-acs-resource.communication.azure.com/;accesskey=your-access-key-here",
+    "CosmosDb": "AccountEndpoint=https://your-cosmos-account.documents.azure.com:443/;AccountKey=your-cosmos-key-here;"
+  },
+  "CosmosDb": {
+    "Endpoint": "https://your-cosmos-account.documents.azure.com:443/",
+    "Key": "your-cosmos-key-here"
+  },
+  "ACS": {
+    "EndpointUrl": "https://your-acs-resource.communication.azure.com",
+    "DefaultTokenScope": "chat",
+    "TokenExpirationHours": 24,
+    "MaxConcurrentOperations": 10
+  },
+  "AzureAd": {
+    "TenantId": "your-tenant-id-here",
+    "ClientId": "your-app-registration-client-id-here",
+    "ClientSecret": "your-app-registration-client-secret-here"
+  },
+  "AzureOpenAI": {
+    "Endpoint": "https://your-azure-openai-resource.openai.azure.com/",
+    "ApiKey": "your-azure-openai-key-here",
+    "DeploymentName": "your-gpt-4o-mini-deployment-name",
+    "ApiVersion": "2024-05-01-preview"
+  },
+  "TeamsApp": {
+    "AppId": "your-teams-app-id-here",
+    "BaseUrl": "https://your-teams-app-base-url.com",
+    "TeamId": "your-teams-team-id-here"
+  }, 
+   "EmailSettings": {
+    "ServiceAccountEmail": "ejaz.hussain@office365clinic.com"
+  }
+ 
+}

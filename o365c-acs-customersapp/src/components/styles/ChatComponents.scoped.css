@@ -1,0 +1,597 @@
+/* ChatComponents Override Styles */
+/* High specificity CSS to override Azure Communication Services default styles */
+/* SCOPED to .custom-chat-thread to avoid affecting CallWithChatComposite */
+
+/* Override ACS message containers - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-messageContainer,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="message"] {
+  margin-bottom: 4px !important;
+  padding: 0 !important;
+}
+
+/* Override ACS message bubbles - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-message,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="message"] div {
+  max-width: 80% !important;
+  padding: 6px 12px !important;
+  border-radius: 16px !important;
+  margin: 2px 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* User messages (right-aligned, blue) - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-message--mine,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="message"][data-mine="true"] div,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-is-mine="true"] div {
+  background-color: #3b82f6 !important;
+  color: white !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  border-bottom-right-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Agent messages (left-aligned, white) - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-message--other,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="message"][data-mine="false"] div,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-is-mine="false"] div {
+  background-color: white !important;
+  color: #1f2937 !important;
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  border-bottom-left-radius: 4px !important;
+  border: 1px solid #d1d5db !important;
+}
+
+/* Override message content - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-messageContent,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="messageContent"] {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Override avatars with subtle, modern styling - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-avatar,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="avatar"] {
+  width: 32px !important;
+  height: 32px !important;
+  margin-bottom: 2px !important;
+  transition: transform 0.15s ease !important;
+}
+
+/* Subtle avatar hover effect - SCOPED */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-avatar:hover,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="avatar"]:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Ensure avatar containers have proper spacing - SCOPED */
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="message"] {
+  gap: 8px !important;
+  align-items: flex-end !important;
+}
+
+/* Style the Radix Avatar root with subtle animations */
+.rt-AvatarRoot {
+  transition: all 0.15s ease !important;
+}
+
+.rt-AvatarRoot:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Enhance avatar fallback text styling with better contrast management */
+.rt-AvatarFallback {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  /* Use CSS custom property for text color to allow dynamic contrast adjustment */
+  color: var(--avatar-text-color, #ffffff) !important;
+}
+
+/* Ensure initials are visible with proper contrast */
+.rt-AvatarRoot .rt-AvatarFallback {
+  color: var(--avatar-text-color, white) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+/* Override chat container - SCOPED */
+.custom-chat-thread .ms-MessageThread,
+.custom-chat-thread div[data-ui-id*="MessageThread"] {
+  padding: 0 !important;
+  background-color: transparent !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Ensure sendbox container stays at bottom */
+.custom-chat-thread .ms-SendBox,
+.custom-chat-thread div[data-ui-id*="SendBox"] {
+  flex-shrink: 0 !important;
+  margin-top: auto !important;
+}
+
+/* System messages */
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-systemMessage,
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="system"] {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #f59e0b !important;
+  text-align: center !important;
+  margin: 4px auto !important;
+  max-width: 280px !important;
+}
+
+/* Message action buttons (Edit/Delete options) */
+.custom-chat-thread .ms-MessageThread button[data-ui-id*="messageAction"],
+.custom-chat-thread .ms-MessageThread button[aria-label*="More"],
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[data-ui-id*="action"],
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[aria-label*="More"],
+.custom-chat-thread button[data-ui-id*="messageActions"],
+.custom-chat-thread button[aria-label*="Message options"] {
+  background-color: var(--gray-3) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  opacity: 0.8 !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Message action button hover state */
+.custom-chat-thread .ms-MessageThread button[data-ui-id*="messageAction"]:hover,
+.custom-chat-thread .ms-MessageThread button[aria-label*="More"]:hover,
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[data-ui-id*="action"]:hover,
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[aria-label*="More"]:hover,
+.custom-chat-thread button[data-ui-id*="messageActions"]:hover,
+.custom-chat-thread button[aria-label*="Message options"]:hover {
+  background-color: var(--gray-4) !important;
+  border-color: var(--gray-7) !important;
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Message action button icons */
+.custom-chat-thread .ms-MessageThread button[data-ui-id*="messageAction"] svg,
+.custom-chat-thread .ms-MessageThread button[aria-label*="More"] svg,
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[data-ui-id*="action"] svg,
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[aria-label*="More"] svg,
+.custom-chat-thread button[data-ui-id*="messageActions"] svg,
+.custom-chat-thread button[aria-label*="Message options"] svg {
+  width: 14px !important;
+  height: 14px !important;
+  color: var(--gray-11) !important;
+}
+
+/* Three dots icon for message options */
+.custom-chat-thread .ms-MessageThread button::before,
+.custom-chat-thread div[data-ui-id*="MessageThread"] button::before {
+  content: "⋯" !important;
+  font-size: 16px !important;
+  color: var(--gray-11) !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+}
+
+/* Generic button styling within message thread - catch-all for action buttons */
+.custom-chat-thread div[data-ui-id*="MessageThread"] button,
+.custom-chat-thread .ms-MessageThread button {
+  background-color: var(--gray-2) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  padding: 4px 6px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 2px !important;
+}
+
+/* Generic button hover within message thread */
+.custom-chat-thread div[data-ui-id*="MessageThread"] button:hover,
+.custom-chat-thread .ms-MessageThread button:hover {
+  background-color: var(--gray-4) !important;
+  border-color: var(--gray-7) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force visibility of any hidden message buttons */
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[style*="display: none"],
+.custom-chat-thread div[data-ui-id*="MessageThread"] button[hidden] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure message action containers are visible */
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="messageAction"],
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="action"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix for potentially invisible text in buttons */
+.custom-chat-thread div[data-ui-id*="MessageThread"] button *,
+.custom-chat-thread .ms-MessageThread button * {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* Message hover states - show action buttons on message hover */
+.custom-chat-thread div[data-ui-id*="MessageThread"] div[data-ui-id*="message"]:hover button,
+.custom-chat-thread .ms-MessageThread .ms-MessageThread-message:hover button,
+.custom-chat-thread div[data-ui-id*="message"]:hover button {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: var(--gray-3) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  padding: 4px 6px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+/* More specific targeting for message action buttons that appear on hover */
+.custom-chat-thread [data-ui-id*="message"] button[aria-label],
+.custom-chat-thread [data-ui-id*="message"] button[title],
+.custom-chat-thread .ms-MessageThread-message button,
+.custom-chat-thread div[class*="message"] button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  font-size: 14px !important;
+  padding: 4px 8px !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Ensure the three dots icon is visible */
+.custom-chat-thread [data-ui-id*="message"] button[aria-label]:empty::before,
+.custom-chat-thread [data-ui-id*="message"] button[title]:empty::before,
+.custom-chat-thread .ms-MessageThread-message button:empty::before,
+.custom-chat-thread div[class*="message"] button:empty::before {
+  content: "⋯" !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: var(--gray-11) !important;
+  display: block !important;
+}
+
+/* Ultra-specific targeting for all buttons in message containers */
+.custom-chat-thread div[data-ui-id*="MessageThread"] * button,
+.custom-chat-thread .ms-MessageThread * button,
+.custom-chat-thread [class*="messageThread"] * button,
+.custom-chat-thread [class*="message-thread"] * button {
+  background-color: var(--gray-3) !important;
+  border: 1px solid var(--gray-6) !important;
+  color: var(--gray-11) !important;
+  border-radius: 4px !important;
+  padding: 6px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Make sure button text/icons are visible */
+.custom-chat-thread div[data-ui-id*="MessageThread"] * button *,
+.custom-chat-thread .ms-MessageThread * button *,
+.custom-chat-thread [class*="messageThread"] * button *,
+.custom-chat-thread [class*="message-thread"] * button * {
+  color: var(--gray-11) !important;
+  opacity: 1 !important;
+}
+
+/* Add visible content to empty buttons */
+.custom-chat-thread div[data-ui-id*="MessageThread"] * button:empty::after,
+.custom-chat-thread .ms-MessageThread * button:empty::after,
+.custom-chat-thread [class*="messageThread"] * button:empty::after,
+.custom-chat-thread [class*="message-thread"] * button:empty::after {
+  content: "•••" !important;
+  font-size: 12px !important;
+  color: var(--gray-11) !important;
+}
+
+/* ACS Fluent UI Button Targeting - Replace debug styles */
+/* Target Microsoft Fluent UI button classes used by ACS */
+.custom-chat-thread .ms-Button,
+.custom-chat-thread .ms-Button--icon,
+.custom-chat-thread .ms-IconButton,
+.custom-chat-thread .ms-ActionButton,
+.custom-chat-thread button[class*="ms-"],
+.custom-chat-thread button[class*="fluent-"],
+.custom-chat-thread [class*="messageThread"] button,
+.custom-chat-thread [class*="message-thread"] button,
+.custom-chat-thread [class*="Message"] button,
+.custom-chat-thread [data-ui-id*="message"] button,
+.custom-chat-thread [role="button"][class*="ms-"] {
+  background-color: var(--gray-4) !important;
+  border: 1px solid var(--gray-7) !important;
+  color: var(--gray-12) !important;
+  border-radius: var(--radius-2) !important;
+  padding: 6px 8px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Hover states for ACS buttons */
+.custom-chat-thread .ms-Button:hover,
+.custom-chat-thread .ms-Button--icon:hover,
+.custom-chat-thread .ms-IconButton:hover,
+.custom-chat-thread .ms-ActionButton:hover,
+.custom-chat-thread button[class*="ms-"]:hover,
+.custom-chat-thread button[class*="fluent-"]:hover,
+.custom-chat-thread [class*="messageThread"] button:hover,
+.custom-chat-thread [class*="message-thread"] button:hover,
+.custom-chat-thread [class*="Message"] button:hover,
+.custom-chat-thread [data-ui-id*="message"] button:hover,
+.custom-chat-thread [role="button"][class*="ms-"]:hover {
+  background-color: var(--gray-5) !important;
+  border-color: var(--gray-8) !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Specific targeting for Edit/Delete/Done buttons */
+.custom-chat-thread button[aria-label*="Edit"],
+.custom-chat-thread button[aria-label*="Delete"], 
+.custom-chat-thread button[aria-label*="Done"],
+.custom-chat-thread button[aria-label*="Cancel"],
+.custom-chat-thread button[title*="Edit"],
+.custom-chat-thread button[title*="Delete"],
+.custom-chat-thread button[title*="Done"],
+.custom-chat-thread button[title*="Cancel"],
+.custom-chat-thread .ms-Button[aria-label*="Edit"],
+.custom-chat-thread .ms-Button[aria-label*="Delete"],
+.custom-chat-thread .ms-Button[aria-label*="Done"],
+.custom-chat-thread .ms-Button[aria-label*="Cancel"] {
+  background-color: var(--blue-3) !important;
+  border: 1px solid var(--blue-7) !important;
+  color: var(--blue-12) !important;
+  font-weight: 500 !important;
+  padding: 4px 8px !important;
+  border-radius: var(--radius-2) !important;
+  font-size: 11px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 32px !important;
+  min-height: 28px !important;
+}
+
+/* Add text content for buttons that might be missing icons */
+.custom-chat-thread button[aria-label*="Edit"]:empty::before,
+.custom-chat-thread button[title*="Edit"]:empty::before,
+.custom-chat-thread .ms-Button[aria-label*="Edit"]:empty::before {
+  content: "✏️" !important;
+  font-size: 14px !important;
+}
+
+.custom-chat-thread button[aria-label*="Delete"]:empty::before,
+.custom-chat-thread button[title*="Delete"]:empty::before,
+.custom-chat-thread .ms-Button[aria-label*="Delete"]:empty::before {
+  content: "🗑️" !important;
+  font-size: 14px !important;
+}
+
+.custom-chat-thread button[aria-label*="Cancel"]:empty::before,
+.custom-chat-thread button[title*="Cancel"]:empty::before,
+.custom-chat-thread .ms-Button[aria-label*="Cancel"]:empty::before {
+  content: "✖" !important;
+  font-size: 12px !important;
+  color: var(--red-11) !important;
+}
+
+/* Add Done button icon */
+.custom-chat-thread button[aria-label*="Done"]:empty::before,
+.custom-chat-thread button[title*="Done"]:empty::before,
+.custom-chat-thread .ms-Button[aria-label*="Done"]:empty::before {
+  content: "✓" !important;
+  font-size: 14px !important;
+  color: var(--green-11) !important;
+  font-weight: bold !important;
+}
+
+/* Fallback text labels if emojis don't work */
+.custom-chat-thread button[aria-label*="Edit"]:not(:has(*))::after,
+.custom-chat-thread button[title*="Edit"]:not(:has(*))::after {
+  content: "Edit" !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+}
+
+.custom-chat-thread button[aria-label*="Delete"]:not(:has(*))::after,
+.custom-chat-thread button[title*="Delete"]:not(:has(*))::after {
+  content: "Del" !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+}
+
+/* Special styling for Done button - clean icon only */
+.custom-chat-thread button[aria-label*="Done"],
+.custom-chat-thread button[title*="Done"],
+.custom-chat-thread .ms-Button[aria-label*="Done"] {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--green-11) !important;
+  padding: 4px !important;
+}
+
+/* Special styling for Delete button - clean icon only */
+.custom-chat-thread button[aria-label*="Delete"],
+.custom-chat-thread button[title*="Delete"], 
+.custom-chat-thread .ms-Button[aria-label*="Delete"] {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--red-11) !important;
+  padding: 4px !important;
+}
+
+/* Special styling for Cancel button - clean icon only */
+.custom-chat-thread button[aria-label*="Cancel"],
+.custom-chat-thread button[title*="Cancel"],
+.custom-chat-thread .ms-Button[aria-label*="Cancel"] {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--red-11) !important;
+  padding: 4px !important;
+}
+
+/* Hover effects for clean buttons */
+.custom-chat-thread button[aria-label*="Done"]:hover,
+.custom-chat-thread button[aria-label*="Delete"]:hover,
+.custom-chat-thread button[aria-label*="Cancel"]:hover,
+.custom-chat-thread button[title*="Done"]:hover,
+.custom-chat-thread button[title*="Delete"]:hover,
+.custom-chat-thread button[title*="Cancel"]:hover {
+  background-color: var(--gray-3) !important;
+  border-radius: 4px !important;
+}
+
+/* ============================================================================
+   Teams Meeting Invitation Styles
+   ============================================================================ */
+
+/* Meeting invitation card container */
+.meeting-invitation {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin: 8px 12px 8px 44px; /* Left margin to align with chat messages (avatar width + gap) */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  transition: all 0.2s ease;
+}
+
+.meeting-invitation:hover {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Meeting icon */
+.meeting-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Meeting content area */
+.meeting-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meeting-content h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.meeting-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #075985;
+}
+
+/* Join Meeting button */
+.btn-join-meeting {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Override any inherited text color with maximum specificity */
+.btn-join-meeting,
+.btn-join-meeting *,
+button.btn-join-meeting,
+.meeting-content .btn-join-meeting,
+.meeting-invitation .btn-join-meeting {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.btn-join-meeting:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.btn-join-meeting:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.btn-join-meeting:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+  box-shadow: none;
+}
+
+/* Meeting error message */
+.meeting-error {
+  padding: 8px 12px;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}

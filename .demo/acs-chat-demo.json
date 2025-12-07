@@ -1,0 +1,113 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "DEMO1 - ACS Chat Demo",
+  "description": "",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mip726sx-y50h",
+      "title": "Initializing the ACS identity client",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ConsoleApp.ACSDemo/Services/ACSDemoService.cs",
+          "position": "41:42",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mip8a277-3ioz",
+      "title": "Step1 - Preview -  Create identity and access token",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/acs-chat-identity.md"
+        }
+      ]
+    },
+    {
+      "id": "demo-mip75ryr-6r82",
+      "title": "Creating Student ACS Identity",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ConsoleApp.ACSDemo/Services/ACSDemoService.cs",
+          "position": "278:292",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mip7b8ms-fpm0",
+      "title": "Create Agent ACS Identity",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "294:308",
+          "highlightWholeLine": true,
+          "zoom": 2,
+          "path": "O365C.ConsoleApp.ACSDemo/Services/ACSDemoService.cs"
+        }
+      ]
+    },
+    {
+      "id": "demo-mipyputs-1y9a",
+      "title": "Step2 - Preview -  Creating Thread",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/acs-chat-thread.md"
+        }
+      ]
+    },
+    {
+      "id": "demo-mip7ccre-oggj",
+      "title": "Creat ACS Thread",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ConsoleApp.ACSDemo/Services/ACSDemoService.cs",
+          "position": "313:334",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mipz3j6a-va4o",
+      "title": "Step3 - Preview -  Messaging",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/acs-chat-message.md"
+        }
+      ]
+    },
+    {
+      "id": "demo-mipz5gps-edxc",
+      "title": "Messaging",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ConsoleApp.ACSDemo/Services/ACSDemoService.cs",
+          "position": "358:376",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mip7lqs0-u8zo",
+      "title": "Recap",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/acs-chat-demo-recap.md"
+        }
+      ]
+    }
+  ]
+}

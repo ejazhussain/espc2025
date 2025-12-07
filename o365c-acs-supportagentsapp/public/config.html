@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Agents Configuration</title>
+    <script src="https://res.cdn.office.net/teams-js/2.24.0/js/MicrosoftTeams.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f3f2f1;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #323130;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .description {
+            color: #605e5c;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #edebe9;
+            color: #323130;
+        }
+        .feature-list li:before {
+            content: "✓";
+            color: #16c60c;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .config-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+        .ready-indicator {
+            color: #16c60c;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Configure Support Agents</h1>
+        <div class="description">
+            Set up the Support Agents app for your team channel. This app provides a comprehensive support ticket management system with real-time chat capabilities.
+        </div>
+        
+        <h3>Features included:</h3>
+        <ul class="feature-list">
+            <li>Real-time customer support chat</li>
+            <li>Thread management and organization</li>
+            <li>Support ticket tracking</li>
+            <li>Agent collaboration tools</li>
+            <li>Dark/Light theme support</li>
+            <li>Multi-tenant support</li>
+        </ul>
+        
+        <div class="config-section">
+            <strong>Configuration:</strong> The app is pre-configured and ready to use. No additional setup required.
+        </div>
+        
+        <div class="ready-indicator">
+            ✓ Ready to install in your team channel
+        </div>
+    </div>
+
+    <script>
+        // Initialize Microsoft Teams SDK
+        microsoftTeams.app.initialize().then(() => {
+            console.log("Teams SDK initialized");
+            
+            // Enable the Save button
+            microsoftTeams.pages.config.setConfig({
+                entityId: "supportAgentsTeamTab",
+                contentUrl: window.location.origin + "/index.html#/tab",
+                websiteUrl: window.location.origin + "/index.html#/tab",
+                suggestedDisplayName: "Support Agents"
+            });
+            
+            // Indicate that the configuration is valid
+            microsoftTeams.pages.config.setValidityState(true);
+            
+            console.log("Configuration set successfully");
+        }).catch((error) => {
+            console.error("Error initializing Teams SDK:", error);
+            
+            // Fallback for older Teams SDK
+            try {
+                microsoftTeams.initialize();
+                microsoftTeams.settings.setSettings({
+                    entityId: "supportAgentsTeamTab",
+                    contentUrl: window.location.origin + "/index.html#/tab",
+                    websiteUrl: window.location.origin + "/index.html#/tab",
+                    suggestedDisplayName: "Support Agents"
+                });
+                microsoftTeams.settings.setValidityState(true);
+                console.log("Fallback configuration set successfully");
+            } catch (fallbackError) {
+                console.error("Fallback configuration failed:", fallbackError);
+            }
+        });
+    </script>
+</body>
+</html>

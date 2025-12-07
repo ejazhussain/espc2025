@@ -1,0 +1,161 @@
+/* Override Azure Communication Services RichTextSendBox styling */
+
+/* Target specific container elements - default state (no border) */
+.rich-text-send-box-override .ms-TextField,
+.rich-text-send-box-override [data-testid="richtext-send-box"],
+.rich-text-send-box-override [class*="sendBox"],
+.rich-text-send-box-override [class*="textField"],
+.rich-text-send-box-override .ms-TextField-fieldGroup,
+.rich-text-send-box-override [class*="fieldGroup"] {
+  background-color: #f9fafb !important;
+  border: none !important;
+  border-radius: 24px !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+
+/* Show border on focus/active state */
+.rich-text-send-box-override:focus-within .ms-TextField,
+.rich-text-send-box-override:focus-within [data-testid="richtext-send-box"],
+.rich-text-send-box-override:focus-within [class*="sendBox"],
+.rich-text-send-box-override:focus-within [class*="textField"],
+.rich-text-send-box-override:focus-within .ms-TextField-fieldGroup,
+.rich-text-send-box-override:focus-within [class*="fieldGroup"],
+.rich-text-send-box-override .ms-TextField:focus-within,
+.rich-text-send-box-override [data-testid="richtext-send-box"]:focus-within,
+.rich-text-send-box-override [class*="sendBox"]:focus-within,
+.rich-text-send-box-override [class*="textField"]:focus-within,
+.rich-text-send-box-override .ms-TextField-fieldGroup:focus-within,
+.rich-text-send-box-override [class*="fieldGroup"]:focus-within {
+  border: 1px solid #d1d5db !important;
+  outline: none !important;
+}
+
+/* Target the input field specifically */
+.rich-text-send-box-override .ms-TextField-field,
+.rich-text-send-box-override input,
+.rich-text-send-box-override textarea,
+.rich-text-send-box-override [contenteditable="true"] {
+  background-color: transparent !important;
+  color: #1f2937 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Target any wrapper divs */
+.rich-text-send-box-override > div,
+.rich-text-send-box-override [class*="wrapper"] {
+  background-color: #f9fafb !important;
+  border-radius: 24px !important;
+  border: none !important;
+}
+
+/* Override any background colors from ACS */
+.rich-text-send-box-override * {
+  background-color: inherit !important;
+}
+
+/* Specific targeting for ACS component structure */
+.rich-text-send-box-override [class*="ms-"] {
+  background-color: #f9fafb !important;
+}
+
+/* Target specific dynamic CSS classes like css-219 */
+.rich-text-send-box-override .css-219 {
+  border: none !important;
+  background-color: #f9fafb !important;
+}
+
+.rich-text-send-box-override:focus-within .css-219 {
+  border: 1px solid #d1d5db !important;
+  background-color: #f9fafb !important;
+}
+
+/* Remove any default Fluent UI borders */
+.rich-text-send-box-override .ms-TextField-wrapper,
+.rich-text-send-box-override .ms-TextField-fieldGroup::after,
+.rich-text-send-box-override .ms-TextField-fieldGroup::before {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Dark mode overrides - default state (no border) */
+.dark .rich-text-send-box-override .ms-TextField,
+.dark .rich-text-send-box-override [data-testid="richtext-send-box"],
+.dark .rich-text-send-box-override [class*="sendBox"],
+.dark .rich-text-send-box-override [class*="textField"],
+.dark .rich-text-send-box-override .ms-TextField-fieldGroup,
+.dark .rich-text-send-box-override [class*="fieldGroup"] {
+  background-color: #374151 !important;
+  border: none !important;
+  color: #f3f4f6 !important;
+  outline: none !important;
+}
+
+/* Dark mode - show border on focus/active state */
+.dark .rich-text-send-box-override:focus-within .ms-TextField,
+.dark .rich-text-send-box-override:focus-within [data-testid="richtext-send-box"],
+.dark .rich-text-send-box-override:focus-within [class*="sendBox"],
+.dark .rich-text-send-box-override:focus-within [class*="textField"],
+.dark .rich-text-send-box-override:focus-within .ms-TextField-fieldGroup,
+.dark .rich-text-send-box-override:focus-within [class*="fieldGroup"],
+.dark .rich-text-send-box-override .ms-TextField:focus-within,
+.dark .rich-text-send-box-override [data-testid="richtext-send-box"]:focus-within,
+.dark .rich-text-send-box-override [class*="sendBox"]:focus-within,
+.dark .rich-text-send-box-override [class*="textField"]:focus-within,
+.dark .rich-text-send-box-override .ms-TextField-fieldGroup:focus-within,
+.dark .rich-text-send-box-override [class*="fieldGroup"]:focus-within {
+  border: 1px solid #4b5563 !important;
+  outline: none !important;
+}
+
+/* Dark mode - specific targeting for css-219 */
+.dark .rich-text-send-box-override .css-219 {
+  border: none !important;
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark .rich-text-send-box-override:focus-within .css-219 {
+  border: 1px solid #4b5563 !important;
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark .rich-text-send-box-override .ms-TextField-field,
+.dark .rich-text-send-box-override input,
+.dark .rich-text-send-box-override textarea,
+.dark .rich-text-send-box-override [contenteditable="true"] {
+  background-color: transparent !important;
+  color: #f3f4f6 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.dark .rich-text-send-box-override > div,
+.dark .rich-text-send-box-override [class*="wrapper"] {
+  background-color: #374151 !important;
+  border: none !important;
+}
+
+.dark .rich-text-send-box-override [class*="ms-"] {
+  background-color: #374151 !important;
+}
+
+/* Dark mode - Remove any default Fluent UI borders */
+.dark .rich-text-send-box-override .ms-TextField-wrapper,
+.dark .rich-text-send-box-override .ms-TextField-fieldGroup::after,
+.dark .rich-text-send-box-override .ms-TextField-fieldGroup::before {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Chat message margin override */
+.fui-ChatMessage {
+  margin-left: 10px !important;
+}
+
+/* Ensure consistent avatar spacing */
+.fui-ChatMessage__content {
+  margin-left: 8px !important;
+}

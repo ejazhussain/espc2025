@@ -1,0 +1,82 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "DEMO2-P1- AI Assistant Integrations",
+  "description": "",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mip5ijhr-5s1k",
+      "title": "Screenshot",
+      "steps": [
+        {
+          "action": "imagePreview",
+          "path": ".demo/screenshots/ai-assistant-flow.png"
+        }
+      ]
+    },
+    {
+      "id": "demo-minolxo7-w08l",
+      "title": "Passing student query to agent service",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-customersapp/src/components/AIAssistantChat.tsx",
+          "position": "146:148",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-minot6ra-vr6z",
+      "title": "Agent Service calling AI Agent",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-customersapp/src/services/AgentService.ts",
+          "position": "45:56",
+          "highlightWholeLine": false,
+          "zoom": 2
+        }
+      ],
+      "description": "Agent Service calling backend AI Agent for response"
+    },
+    {
+      "id": "demo-minps8rp-1aaa",
+      "title": "Initializing Azure AI Agent",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/AzureAIAgentService.cs",
+          "position": "42:57",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ],
+      "description": "Initializing Azure AI Agent"
+    },
+    {
+      "id": "demo-minqef10-ou64",
+      "title": "Azure AI Agent - Processing query",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/AzureAIAgentService.cs",
+          "position": "80:125",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mipzw485-ojy2",
+      "title": "Recap",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/demo2-p1-recap.md"
+        }
+      ]
+    }
+  ]
+}

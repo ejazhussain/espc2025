@@ -1,0 +1,66 @@
+{
+    "id": "${{AAD_APP_OBJECT_ID}}",
+    "appId": "${{AAD_APP_CLIENT_ID}}",
+    "displayName": "o365c-acs-supportagent",
+    "signInAudience": "AzureADMyOrg",
+    "info": {},
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "idtyp",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+    "publicClient": {
+        "redirectUris": []
+    },
+    "requiredResourceAccess": [
+        {
+            "resourceAppId": "Microsoft Graph",
+            "resourceAccess": [
+                {
+                    "id": "User.Read",
+                    "type": "Scope"
+                },
+                {
+                    "id": "offline_access",
+                    "type": "Scope"
+                },
+                {
+                    "id": "openid",
+                    "type": "Scope"
+                },
+                {
+                    "id": "profile",
+                    "type": "Scope"
+                },
+                {
+                    "id": "Channel.ReadBasic.All",
+                    "type": "Role"
+                },
+                {
+                    "id": "Team.ReadBasic.All",
+                    "type": "Role"
+                },
+                {
+                    "id": "TeamsActivity.Send",
+                    "type": "Role"
+                },
+                {
+                    "id": "User.Read.All",
+                    "type": "Role"
+                }
+            ]
+        }
+    ],
+    "spa": {
+        "redirectUris": [
+            "brk-multihub://${{TAB_DOMAIN}}"
+        ]
+    }
+}

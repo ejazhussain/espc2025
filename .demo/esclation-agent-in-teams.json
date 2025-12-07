@@ -1,0 +1,133 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "DEMO2-P2-Esclation to Human Agent in Teams",
+  "description": "",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mip656dd-lkg5",
+      "title": "Screenshot",
+      "steps": [
+        {
+          "action": "imagePreview",
+          "path": ".demo/screenshots/esclation-to-human-agent-flow.png"
+        }
+      ]
+    },
+    {
+      "id": "demo-minqkihx-jtso",
+      "title": "Student - Initializing ACS Chat from client",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-customersapp/src/components/createAndJoinChatThreadWithNewUser.tsx",
+          "position": "66:162",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-minrc5sl-k5wu",
+      "title": "Student - Create Thread  - API",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/ChatService.cs",
+          "position": "153:208",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mins49c3-lwdw",
+      "title": "Student - Notification SignalR - Queue - API",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Functions/ChatFunction.cs",
+          "position": "95:118",
+          "highlightWholeLine": true
+        }
+      ]
+    },
+    {
+      "id": "demo-minrh58t-w1w3",
+      "title": "Student Join Thread - API",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Services/ChatService.cs",
+          "position": "280:340",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-minso2oa-y58q",
+      "title": "Agent -  Get Agent Info",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-supportagentsapp/src/components/chat/AgentScreen.tsx",
+          "position": "93:106",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ],
+      "description": "Get Agent Info\nGet ACS Token for that agent"
+    },
+    {
+      "id": "demo-minsu6qn-soh0",
+      "title": "Agent - SignalR Notifications Handles",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-supportagentsapp/src/components/chat/AgentScreen.tsx",
+          "position": "252:255",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ],
+      "description": "SignalR notification handle for new chat request and, Chat Claimed and Chat cancel"
+    },
+    {
+      "id": "demo-mint17y4-myxw",
+      "title": "Agent - Accepted the chat",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "o365c-acs-supportagentsapp/src/components/chat/AgentScreen.tsx",
+          "position": "377:400",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-miopg6bs-unnq",
+      "title": "Agent - Accepted the chat - backend",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "O365C.ACS.Integration.API/Functions/AgentFunction.cs",
+          "position": "379:389",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ]
+    },
+    {
+      "id": "demo-mip4fozz-xcdd",
+      "title": " Recap",
+      "steps": [
+        {
+          "action": "openSlide",
+          "path": ".demo/slides/demo2-p2-recap.md"
+        }
+      ]
+    }
+  ]
+}

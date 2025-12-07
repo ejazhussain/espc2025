@@ -1,0 +1,85 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.21/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.21",
+    "version": "1.3.7",
+    "id": "${{TEAMS_APP_ID}}",
+    "developer": {
+        "name": "Office 365 Clinic",
+        "websiteUrl": "${{TAB_ENDPOINT}}",
+        "privacyUrl": "${{TAB_ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "[O365C] Support Agents",
+        "full": "[O365C] Support Agents - Customer Support Management System"
+    },
+    "description": {
+        "short": "[O365C] Customer support management with real-time chat and ticket tracking",
+        "full": "[O365C] Support Agents is a comprehensive customer support management system that provides real-time chat capabilities, thread management, support ticket tracking, and agent collaboration tools. Features include dark/light theme support, multi-tenant architecture, and seamless integration with Microsoft Teams for enhanced team collaboration and customer service delivery."
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [],
+    "composeExtensions": [],
+    "configurableTabs": [
+        {
+            "configurationUrl": "${{TAB_ENDPOINT}}/index.html#/config",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team",
+                "groupChat"
+            ]
+        }
+    ],
+    "staticTabs": [
+        {
+            "entityId": "index",
+            "name": "Home",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "scopes": [
+                "personal",
+                "groupChat"
+            ]
+        }
+    ],
+    "defaultInstallScope": "team",
+    "defaultGroupCapability": {
+        "team": "tab",
+        "groupchat": "tab",
+        "meetings": "tab"
+    },
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "activities": {
+        "activityTypes": [
+            {
+                "type": "supportRequest",
+                "description": "New support request notification",
+                "templateText": "New support chat request from customer"
+            }
+        ]
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "type": "Application",
+                    "name": "TeamsActivity.Send.User"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "${{TAB_HOSTNAME}}"
+    ],
+    "webApplicationInfo": {
+        "id": "${{AAD_APP_CLIENT_ID}}",
+        "resource": "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+    }
+}

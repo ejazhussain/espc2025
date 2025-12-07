@@ -1,0 +1,117 @@
+/* Enhanced Dark Mode Styles for Left Sidebar and Chat Components */
+
+/* Dark mode improvements for scrollbars */
+.dark *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.dark *::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 3px;
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Dark mode thread list enhancements */
+.dark .thread-list-container {
+  background-color: #111827 !important;
+  border-color: #374151 !important;
+}
+
+/* Dark mode chat header improvements */
+.dark .chat-header {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+/* Dark mode loading spinner */
+.dark .loading-spinner {
+  color: #9ca3af !important;
+}
+
+/* Dark mode toast notifications */
+.dark .toast-notification {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+/* Dark mode button improvements */
+.dark button:not(.rich-text-send-box-override button) {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+.dark button:hover:not(.rich-text-send-box-override button) {
+  background-color: #4b5563 !important;
+  border-color: #6b7280 !important;
+}
+
+/* Dark mode focus states */
+.dark *:focus-visible {
+  outline: 2px solid #60a5fa !important;
+  outline-offset: 2px !important;
+}
+
+/* Dark mode text selection */
+.dark ::selection {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+/* Dark mode placeholder text */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Dark mode border improvements */
+.dark .border,
+.dark [class*="border"] {
+  border-color: #374151 !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #4b5563 !important;
+}
+
+/* Dark mode shadow improvements */
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Dark mode for Azure Communication Services components */
+.dark [data-ui-id*="message"] {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark [data-ui-id*="chat"] {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+
+/* Dark mode improvements for system messages */
+.dark .system-message {
+  background-color: #1f2937 !important;
+  border-color: #f59e0b !important;
+  color: #fbbf24 !important;
+}

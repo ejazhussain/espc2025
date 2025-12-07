@@ -1,0 +1,441 @@
+/* ChatComponents Minimal Styles */
+/* Only custom styles for meeting invitations - let ACS handle its own styling */
+
+/* ============================================================================
+   Teams Meeting Invitation Styles
+   ============================================================================ */
+
+/* Meeting invitation card container */
+.meeting-invitation {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin: 8px 12px 8px 44px; /* Left margin to align with chat messages (avatar width + gap) */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  transition: all 0.2s ease;
+}
+
+.meeting-invitation:hover {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Meeting icon */
+.meeting-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Meeting content area */
+.meeting-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meeting-content h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.meeting-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #075985;
+}
+
+/* Join Meeting button */
+.btn-join-meeting {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Override any inherited text color */
+.btn-join-meeting,
+.btn-join-meeting *,
+button.btn-join-meeting,
+.meeting-content .btn-join-meeting,
+.meeting-invitation .btn-join-meeting {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.btn-join-meeting:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.btn-join-meeting:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.btn-join-meeting:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%) !important;
+  box-shadow: none;
+}
+
+/* Meeting error message */
+.meeting-error {
+  padding: 8px 12px;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ms-MessageThread,
+div[data-ui-id*="MessageThread"] {
+  padding: 0 !important;
+  background-color: transparent !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Ensure sendbox container stays at bottom */
+.ms-SendBox,
+div[data-ui-id*="SendBox"] {
+  flex-shrink: 0 !important;
+  margin-top: auto !important;
+}
+
+/* System messages */
+.ms-MessageThread .ms-MessageThread-systemMessage,
+div[data-ui-id*="MessageThread"] div[data-ui-id*="system"] {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #f59e0b !important;
+  text-align: center !important;
+  margin: 4px auto !important;
+  max-width: 280px !important;
+}
+
+/* Message action buttons (Edit/Delete options) */
+.ms-MessageThread button[data-ui-id*="messageAction"],
+.ms-MessageThread button[aria-label*="More"],
+div[data-ui-id*="MessageThread"] button[data-ui-id*="action"],
+div[data-ui-id*="MessageThread"] button[aria-label*="More"],
+button[data-ui-id*="messageActions"],
+button[aria-label*="Message options"] {
+  background-color: var(--gray-3) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  opacity: 0.8 !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Message action button hover state */
+.ms-MessageThread button[data-ui-id*="messageAction"]:hover,
+.ms-MessageThread button[aria-label*="More"]:hover,
+div[data-ui-id*="MessageThread"] button[data-ui-id*="action"]:hover,
+div[data-ui-id*="MessageThread"] button[aria-label*="More"]:hover,
+button[data-ui-id*="messageActions"]:hover,
+button[aria-label*="Message options"]:hover {
+  background-color: var(--gray-4) !important;
+  border-color: var(--gray-7) !important;
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Message action button icons */
+.ms-MessageThread button[data-ui-id*="messageAction"] svg,
+.ms-MessageThread button[aria-label*="More"] svg,
+div[data-ui-id*="MessageThread"] button[data-ui-id*="action"] svg,
+div[data-ui-id*="MessageThread"] button[aria-label*="More"] svg,
+button[data-ui-id*="messageActions"] svg,
+button[aria-label*="Message options"] svg {
+  width: 14px !important;
+  height: 14px !important;
+  color: var(--gray-11) !important;
+}
+
+/* Three dots icon for message options */
+.ms-MessageThread button::before,
+div[data-ui-id*="MessageThread"] button::before {
+  content: "⋯" !important;
+  font-size: 16px !important;
+  color: var(--gray-11) !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+}
+
+/* Generic button styling within message thread - catch-all for action buttons */
+div[data-ui-id*="MessageThread"] button,
+.ms-MessageThread button {
+  background-color: var(--gray-2) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  padding: 4px 6px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 2px !important;
+}
+
+/* Generic button hover within message thread */
+div[data-ui-id*="MessageThread"] button:hover,
+.ms-MessageThread button:hover {
+  background-color: var(--gray-4) !important;
+  border-color: var(--gray-7) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force visibility of any hidden message buttons */
+div[data-ui-id*="MessageThread"] button[style*="display: none"],
+div[data-ui-id*="MessageThread"] button[hidden] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure message action containers are visible */
+div[data-ui-id*="MessageThread"] div[data-ui-id*="messageAction"],
+div[data-ui-id*="MessageThread"] div[data-ui-id*="action"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix for potentially invisible text in buttons */
+div[data-ui-id*="MessageThread"] button *,
+.ms-MessageThread button * {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* Message hover states - show action buttons on message hover */
+div[data-ui-id*="MessageThread"] div[data-ui-id*="message"]:hover button,
+.ms-MessageThread .ms-MessageThread-message:hover button,
+div[data-ui-id*="message"]:hover button {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: var(--gray-3) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  padding: 4px 6px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+/* More specific targeting for message action buttons that appear on hover */
+[data-ui-id*="message"] button[aria-label],
+[data-ui-id*="message"] button[title],
+.ms-MessageThread-message button,
+div[class*="message"] button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid var(--gray-6) !important;
+  border-radius: var(--radius-2) !important;
+  color: var(--gray-11) !important;
+  font-size: 14px !important;
+  padding: 4px 8px !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Ensure the three dots icon is visible */
+[data-ui-id*="message"] button[aria-label]:empty::before,
+[data-ui-id*="message"] button[title]:empty::before,
+.ms-MessageThread-message button:empty::before,
+div[class*="message"] button:empty::before {
+  content: "⋯" !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: var(--gray-11) !important;
+  display: block !important;
+}
+
+/* Ultra-specific targeting for all buttons in message containers */
+div[data-ui-id*="MessageThread"] * button,
+.ms-MessageThread * button,
+[class*="messageThread"] * button,
+[class*="message-thread"] * button {
+  background-color: var(--gray-3) !important;
+  border: 1px solid var(--gray-6) !important;
+  color: var(--gray-11) !important;
+  border-radius: 4px !important;
+  padding: 6px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Make sure button text/icons are visible */
+div[data-ui-id*="MessageThread"] * button *,
+.ms-MessageThread * button *,
+[class*="messageThread"] * button *,
+[class*="message-thread"] * button * {
+  color: var(--gray-11) !important;
+  opacity: 1 !important;
+}
+
+/* Add visible content to empty buttons */
+div[data-ui-id*="MessageThread"] * button:empty::after,
+.ms-MessageThread * button:empty::after,
+[class*="messageThread"] * button:empty::after,
+[class*="message-thread"] * button:empty::after {
+  content: "•••" !important;
+  font-size: 12px !important;
+  color: var(--gray-11) !important;
+}
+
+/* ============================================================================
+   Teams Meeting Invitation Styles
+   ============================================================================ */
+
+/* Meeting invitation card container */
+.meeting-invitation {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin: 8px 12px 8px 44px; /* Left margin to align with chat messages (avatar width + gap) */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  transition: all 0.2s ease;
+}
+
+.meeting-invitation:hover {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Meeting icon */
+.meeting-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Meeting content area */
+.meeting-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meeting-content h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.meeting-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #075985;
+}
+
+/* Join Meeting button */
+.btn-join-meeting {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Override any inherited text color with maximum specificity */
+.btn-join-meeting,
+.btn-join-meeting *,
+button.btn-join-meeting,
+.meeting-content .btn-join-meeting,
+.meeting-invitation .btn-join-meeting {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.btn-join-meeting:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.btn-join-meeting:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.btn-join-meeting:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+  box-shadow: none;
+}
+
+/* Meeting error message */
+.meeting-error {
+  padding: 8px 12px;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
