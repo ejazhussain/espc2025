@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(del \"C:\\GitHub\\o365c-agents\\o365c-acs-agent\\O365C.Acs.SignalR\\Function1.cs\")"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}
